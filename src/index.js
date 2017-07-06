@@ -16,10 +16,10 @@ const store = createStore(
 );
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App/>
-        </ConnectedRouter>
-    </Provider>,
+        <Provider store={store}>
+            <ConnectedRouter history={history}>
+                <App/>
+            </ConnectedRouter>
+        </Provider>,
     document.getElementById('root')
 );

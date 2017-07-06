@@ -15,7 +15,11 @@ class App extends Component {
   }
 }
 
-export default withRouter(connect(
-    state => ({}),
-    dispatch => ({})
-)(App));
+function mapStateToProps (state) {
+    return {
+        user: state.user,
+        page: state.page
+    }
+}
+
+export default withRouter(connect(mapStateToProps)(App))
