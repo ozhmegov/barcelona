@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Route, Switch} from "react-router";
-import About from "./About";
-import Team from "./Team";
-import Schedule from "./Schedule";
+import About from "./components/view/About";
+import Team from "./components/view/Team";
+import ScheduleContainer from "./components/containers/ScheduleContainer";
 
 export default class Main extends Component {
     render() {
@@ -11,7 +11,7 @@ export default class Main extends Component {
                 <Switch>
                     <Route exact path='/' component={About}/>
                     <Route path='/team' component={Team}/>
-                    <Route path='/schedule' component={Schedule}/>
+                    <Route path='/schedule' component={ScheduleContainer}/>
                     <Route component={About}/>
                 </Switch>
             </main>
