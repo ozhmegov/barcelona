@@ -9,7 +9,7 @@ import * as userActions from '../actions/userActions';
 class ScheduleContainer extends Component {
     render() {
         return (
-            <Schedule user={this.props.user}
+            <Schedule users={this.props.users}
                       page={this.props.page}
                       userActions={this.props.userActions}
             />
@@ -19,7 +19,7 @@ class ScheduleContainer extends Component {
 
 function mapStateToProps (store) {
     return {
-        user: store.userReducer,
+        users: store.userReducer,
         page: store.page
     }
 }

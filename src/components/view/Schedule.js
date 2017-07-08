@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
 
 export default class Schedule extends Component {
-    onUsernameBtnClick() {
-        this.props.userActions.setUsername('Egor');
+    addUser(){
+        this.props.userActions.addUser({
+            name: this.userNameInput.value,
+            lastName: this.userLastNameInput.value
+        });
+        this.userNameInput.value = '';
+        this.userLastNameInput.value = '';
     }
 
     render() {
         return (
             <div>
-                { this.props.user.name }
-                { this.props.page.year }
-                <button onClick={this.onUsernameBtnClick.bind(this)}>Set Name</button>
+                <input type="text" placeholder="Name" ref={(input) => {this.userNameInput = input}}/>
+                <input type="text" placeholder="Last Name" ref={(input) => {this.userLastNameInput = input}}/>
+                <button onClick={this.addUser.bind(this)}>Add user</button>
+                <ul>
+                    {this.props.users.map((user, index) =>
+                        <li key={index}>{user.name} {user.lastName}</li>
+                    )}
+                </ul>
             </div>
         );
     }

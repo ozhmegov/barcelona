@@ -1,16 +1,16 @@
-import {SET_USERNAME} from '../constants/User';
 import {ADD_USER} from '../constants/User';
+import {DELETE_USER} from '../constants/User';
 
-export function setUsername(name) {
+export function addUser({name, lastName}) {
     return {
-        type: SET_USERNAME,
-        payload: name
+        type: ADD_USER,
+        payload: {name, lastName}
     }
 }
 
-export function addUser(name) {
+export function deleteUser({name, lastName}) {
     return {
-        type: ADD_USER,
-        payload: name
+        type: DELETE_USER,
+        payload: {name, lastName}
     }
 }
