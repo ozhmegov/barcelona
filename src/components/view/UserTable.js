@@ -7,10 +7,9 @@ export default class UserTable extends Component {
             <table>
                 <thead>
                 <tr>
-                    <th>Image</th>
+                    <th>Id</th>
                     <th>Name</th>
-                    <th>Age</th>
-                    <th>Phone</th>
+                    <th>Last Name</th>
                 </tr>
                 </thead>
                 <tbody>
