@@ -1,20 +1,26 @@
 import {ADD_USER} from '../constants/User';
 import {DELETE_USER} from '../constants/User';
 
-const initialState = [];
+const initialState = {
+    users: []
+};
 
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_USER:
-            return [...state,
-                action.payload
-            ];
+            return {
+                ...state,
+                users: [
+                    ...state.users,
+                    action.payload
+                ]
+            };
 
         case DELETE_USER:
-            return [
-                ...state,
-                state.filter(({ id }) => id !== action.payload)
-        ];
+            let id = action.payload;
+            return {...state,
+                users: state.users.filter(user => user.id !== id)
+            };
 
         default:
             return state;
