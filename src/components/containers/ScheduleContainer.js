@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Schedule from "../view/Schedule";
 import { bindActionCreators } from 'redux';
 import * as userActions from '../actions/userActions';
-
+import axios from 'axios';
 
 class ScheduleContainer extends Component {
     render() {
@@ -12,9 +12,17 @@ class ScheduleContainer extends Component {
             <Schedule users={this.props.users}
                       page={this.props.page}
                       userActions={this.props.userActions}
+
             />
         );
     }
+}
+
+function componentWillMount() {
+    axios.get('https://jsonplaceholder.typicode.com/albums')
+        .then(function(response){
+
+        });
 }
 
 function mapStateToProps (store) {
@@ -31,5 +39,9 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default withRouter(
-    connect(mapStateToProps, mapDispatchToProps)(ScheduleContainer)
+    connect(
+        mapStateToProps,
+        mapDispatchToProps,
+        componentWillMount()
+    )(ScheduleContainer)
 )

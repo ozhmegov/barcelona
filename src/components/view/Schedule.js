@@ -16,6 +16,10 @@ export default class Schedule extends Component {
         this.props.userActions.deleteUser(id);
     }
 
+    test(){
+        console.log(this.props.users);
+    }
+
 
     render() {
         return (
@@ -45,6 +49,8 @@ export default class Schedule extends Component {
                         )}
                     </tbody>
                 </table>
+
+                <button onClick={this.test.bind(this)}>Test</button>
             </div>
         );
     }
