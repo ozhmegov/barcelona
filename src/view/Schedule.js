@@ -17,7 +17,7 @@ export default class Schedule extends Component {
     }
 
     test(){
-        console.log(this.props.usersState);
+        console.log(this.props.users);
     }
 
 

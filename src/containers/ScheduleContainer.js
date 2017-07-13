@@ -7,22 +7,22 @@ import * as userActions from '../actions/userActions';
 import axios from 'axios';
 
 class ScheduleContainer extends Component {
+    componentWillMount() {
+
+            //{type: 'ADD_USER', payload: {id: 'ef', name: 'fff', lastName: 'vdc'}}
+
+            /*axios.get('https://jsonplaceholder.typicode.com/users')
+             .then(function(response){
+             console.log(response.data);
+             });*/
+    }
     render() {
         return (
             <Schedule userReducer={this.props.userReducer}
-                      page={this.props.page}
                       userActions={this.props.userActions}
-                      usersState={this.props.usersState}
             />
         );
     }
-}
-
-function componentWillMount() {
-    axios.get('https://jsonplaceholder.typicode.com/users')
-        .then(function(response){
-
-        });
 }
 
 function mapStateToProps (store) {
@@ -40,7 +40,6 @@ function mapDispatchToProps(dispatch) {
 export default withRouter(
     connect(
         mapStateToProps,
-        mapDispatchToProps,
-        componentWillMount()
+        mapDispatchToProps
     )(ScheduleContainer)
 )
