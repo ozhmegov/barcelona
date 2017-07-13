@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import {Route, Switch} from "react-router";
-import About from "./components/view/About";
-import Team from "./components/view/Team";
-import ScheduleContainer from "./components/containers/ScheduleContainer";
+import About from "./view/About";
+import Team from "./view/Team";
+import ScheduleContainer from "./containers/ScheduleContainer";
 
 export default class Main extends Component {
     render() {

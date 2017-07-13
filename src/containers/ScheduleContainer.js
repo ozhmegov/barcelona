@@ -9,17 +9,17 @@ import axios from 'axios';
 class ScheduleContainer extends Component {
     render() {
         return (
-            <Schedule users={this.props.users}
+            <Schedule userReducer={this.props.userReducer}
                       page={this.props.page}
                       userActions={this.props.userActions}
-
+                      usersState={this.props.usersState}
             />
         );
     }
 }
 
 function componentWillMount() {
-    axios.get('https://jsonplaceholder.typicode.com/albums')
+    axios.get('https://jsonplaceholder.typicode.com/users')
         .then(function(response){
 
         });
@@ -27,8 +27,7 @@ function componentWillMount() {
 
 function mapStateToProps (store) {
     return {
-        users: store.userReducer,
-        page: store.page
+        userReducer: store.userReducer,
     }
 }
 

@@ -17,7 +17,7 @@ export default class Schedule extends Component {
     }
 
     test(){
-        console.log(this.props.users);
+        console.log(this.props.usersState);
     }
 
 
@@ -39,7 +39,7 @@ export default class Schedule extends Component {
                     </thead>
 
                     <tbody>
-                        {this.props.users.users.map((user, index) =>
+                        {this.props.userReducer.users.map((user, index) =>
                             <tr key={index}>
                                 <td>{user.id}</td>
                                 <td>{user.name}</td>
