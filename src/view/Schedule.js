@@ -3,38 +3,32 @@ import React, { Component } from 'react';
 export default class Schedule extends Component {
     addUser(){
         this.props.userActions.addUser({
-            id: this.userIdInput.value,
-            name: this.userNameInput.value,
-            lastName: this.userLastNameInput.value
+            id: this.idInput.value,
+            userId: this.userIdInput.value,
+            title: this.userTitleInput.value
         });
+        this.idInput.value = '';
         this.userIdInput.value = '';
-        this.userNameInput.value = '';
-        this.userLastNameInput.value = '';
+        this.userTitleInput.value = '';
     }
 
     deleteUser(id){
         this.props.userActions.deleteUser(id);
     }
 
-    test(){
-        console.log(this.props.users);
-    }
-
-
     render() {
         return (
             <div>
-                <input type="text" placeholder="Id" ref={(input) => {this.userIdInput = input}}/>
-                <input type="text" placeholder="Name" ref={(input) => {this.userNameInput = input}}/>
-                <input type="text" placeholder="Last Name" ref={(input) => {this.userLastNameInput = input}}/>
+                <input type="text" placeholder="Id" ref={(input) => {this.idInput = input}}/>
+                <input type="text" placeholder="UserId" ref={(input) => {this.userIdInput = input}}/>
+                <input type="text" placeholder="Title" ref={(input) => {this.userTitleInput = input}}/>
                 <button onClick={this.addUser.bind(this)}>Add user</button>
 
                 <table>
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Name</th>
-                            <th>Last Name</th>
+                            <th>Title</th>
                         </tr>
                     </thead>
 
@@ -42,15 +36,12 @@ export default class Schedule extends Component {
                         {this.props.userReducer.users.map((user, index) =>
                             <tr key={index}>
                                 <td>{user.id}</td>
-                                <td>{user.name}</td>
-                                <td>{user.lastName}</td>
+                                <td>{user.title}</td>
                                 <td><button onClick={this.deleteUser.bind(this, user.id)}>Remove</button></td>
                             </tr>
                         )}
                     </tbody>
                 </table>
-
-                <button onClick={this.test.bind(this)}>Test</button>
             </div>
         );
     }

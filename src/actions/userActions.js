@@ -1,10 +1,10 @@
 import {ADD_USER} from '../constants/User';
 import {DELETE_USER} from '../constants/User';
 
-export function addUser({id, name, lastName}) {
+export function addUser({id, userId, title}) {
     return {
         type: ADD_USER,
-        payload: {id, name, lastName}
+        payload: {id, userId, title}
     }
 }
 
