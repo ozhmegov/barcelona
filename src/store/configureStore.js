@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {FETCH_USERS} from '../constants/User';
+import {FETCH_PLAYER} from '../constants/Player';
 import store from '../store/store';
 
-export default function getUsers() {
+export default function getPlayers() {
     axios.get('https://jsonplaceholder.typicode.com/albums')
         .then(function(response){
             store.dispatch({
-                type: FETCH_USERS,
+                type: FETCH_PLAYER,
                 payload: response.data
             })
         });
