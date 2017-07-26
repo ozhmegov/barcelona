@@ -1,16 +1,12 @@
 import {ADD_PLAYER} from '../constants/Player';
 import {DELETE_PLAYER} from '../constants/Player';
-import axios from 'axios';
+import {GET_PLAYERS} from '../constants/Player';
 
 export function addPlayer(player) {
-    axios.post('http://localhost:8080/addPlayer', {
-        name: player.name,
-        lastName: player.lastName,
-        number: player.number,
-        role: player.role
-    }).then(function (response) {
-            console.log(response);
-        });
+    return {
+        type: ADD_PLAYER,
+        payload: player
+    }
 }
 
 export function deletePlayer(id) {
@@ -20,8 +16,10 @@ export function deletePlayer(id) {
     }
 }
 
-export function getPlayers() {
+export function getPlayers(players) {
+    console.log(players);
     return {
-
+        type: GET_PLAYERS,
+        payload: players
     }
 }

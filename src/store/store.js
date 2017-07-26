@@ -7,7 +7,7 @@ import history from '../history/history';
 
 const store = createStore(
     connectRouter(history)(reducer),
-    composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history))),
+    composeWithDevTools(applyMiddleware(thunk, routerMiddleware(history)))
 );
 
 export default store;

@@ -1,6 +1,6 @@
 import {ADD_PLAYER} from '../constants/Player';
 import {DELETE_PLAYER} from '../constants/Player';
-import {FETCH_PLAYER} from '../constants/Player';
+import {GET_PLAYERS} from '../constants/Player';
 
 const initialState = {
     players: []
@@ -8,7 +8,7 @@ const initialState = {
 
 export default function playerReducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_PLAYER:
+        case GET_PLAYERS:
             return {
                 ...state,
                 players: action.payload

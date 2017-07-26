@@ -3,21 +3,19 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import * as playerActions from '../actions/playerActions';
-import axios from 'axios';
 import Team from "../view/Team";
+import * as configureStore from '../store/configureStore';
 
 class TeamContainer extends Component {
     componentWillMount() {
-        axios.get('http://localhost:8080/getPlayers')
-            .then(function (response) {
-                console.log(response.data);
-            })
+        configureStore.getListPlayers();
     }
 
     render() {
         return (
             <Team playerReducer={this.props.playerReducer}
                   playerActions={this.props.playerActions}
+                  configureStore={this.props.configureStore}
             />
         );
     }
@@ -25,13 +23,14 @@ class TeamContainer extends Component {
 
 function mapStateToProps (store) {
     return {
-        playerReducer: store.playerReducer,
+        playerReducer: store.playerReducer
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        playerActions: bindActionCreators(playerActions, dispatch)
+        playerActions: bindActionCreators(playerActions, dispatch),
+        configureStore: bindActionCreators(configureStore, dispatch)
     }
 }
 
