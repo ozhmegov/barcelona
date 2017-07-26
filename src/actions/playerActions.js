@@ -1,25 +1,26 @@
 import {ADD_PLAYER} from '../constants/Player';
-import {DELETE_PLAYER} from '../constants/Player';
 import {GET_PLAYERS} from '../constants/Player';
+import store from '../store/store';
+import axios from 'axios';
 
 export function addPlayer(player) {
-    return {
-        type: ADD_PLAYER,
-        payload: player
+    return (dispatch) => {
+        axios.post('http://localhost:8080/addPlayer', player)
+            .then((response) => dispatch({
+                type: ADD_PLAYER,
+                payload: response.data
+            }))
     }
 }
 
-export function deletePlayer(id) {
-    return {
-        type: DELETE_PLAYER,
-        payload: id
-    }
+export function getListPlayers () {
+    axios.get('http://localhost:8080/getPlayers')
+        .then((response) => {
+            store.dispatch({
+                type: GET_PLAYERS,
+                payload: response.data
+            })
+        });
 }
 
-export function getPlayers(players) {
-    console.log(players);
-    return {
-        type: GET_PLAYERS,
-        payload: players
-    }
-}
+

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class Team extends Component {
     addPlayer(){
-        this.props.configureStore.addPlayer({
+        this.props.playerActions.addPlayer({
             name: this.nameInput.value,
             lastName: this.lastNameInput.value,
             number: this.numberInput.value,
