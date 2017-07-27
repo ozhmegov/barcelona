@@ -18,6 +18,14 @@ export default class Team extends Component {
         this.props.playerActions.deletePlayer(id);
     }
 
+    updatePlayer(player){
+        this.nameInput.value = player.name;
+        this.lastNameInput.value = player.lastName;
+        this.numberInput.value = player.number;
+        this.roleInput.value = player.role;
+        this.props.playerActions.updatePlayer(player);
+    }
+
     render() {
         return (
             <div>
@@ -47,6 +55,7 @@ export default class Team extends Component {
                             <td>{player.number}</td>
                             <td>{player.role}</td>
                             <td><button onClick={this.deletePlayer.bind(this, player.id)}>Remove</button></td>
+                            <td><button onClick={this.updatePlayer.bind(this, player)}>Update</button></td>
                         </tr>
                     )}
                     </tbody>

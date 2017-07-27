@@ -1,6 +1,4 @@
-import {ADD_PLAYER} from '../constants/Player';
-import {DELETE_PLAYER} from '../constants/Player';
-import {GET_PLAYERS} from '../constants/Player';
+import {ADD_PLAYER, UPDATE_PLAYER, GET_PLAYERS, DELETE_PLAYER} from '../constants/Player';
 
 const initialState = {
     players: []
@@ -25,8 +23,17 @@ export default function playerReducer(state = initialState, action) {
 
         case DELETE_PLAYER:
             let id = action.payload;
-            return {...state,
+            return {
+                ...state,
                 players: state.players.filter(player => player.id !== id)
+            };
+
+        case UPDATE_PLAYER:
+            return {
+                ...state,
+                players: state.players.map(player => {
+                    return player.id === action.payload.id ? action.payload : player;
+                })
             };
 
         default:
