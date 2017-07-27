@@ -14,7 +14,8 @@
     "react-router-redux": "^4.0.8",
     "redux": "^3.7.1",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "react-modal": "latest"
   },
   "devDependencies": {
     "react-scripts": "1.0.10"

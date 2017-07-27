@@ -1,6 +1,22 @@
 import React, { Component } from 'react';
+import ReactModal from 'react-modal';
 
 export default class Team extends Component {
+    constructor () {
+        super();
+        this.state = {
+            showModal: false
+        };
+    }
+
+    handleOpenModal () {
+        this.setState({ showModal: true });
+    }
+
+    handleCloseModal () {
+        this.setState({ showModal: false });
+    }
+
     addPlayer(){
         this.props.playerActions.addPlayer({
             name: this.nameInput.value,
@@ -19,11 +35,11 @@ export default class Team extends Component {
     }
 
     updatePlayer(player){
-        this.nameInput.value = player.name;
-        this.lastNameInput.value = player.lastName;
-        this.numberInput.value = player.number;
-        this.roleInput.value = player.role;
-        this.props.playerActions.updatePlayer(player);
+        // this.nameInput.value = player.name;
+        // this.lastNameInput.value = player.lastName;
+        // this.numberInput.value = player.number;
+        // this.roleInput.value = player.role;
+        // this.props.playerActions.updatePlayer(player);
     }
 
     render() {
@@ -60,6 +76,15 @@ export default class Team extends Component {
                     )}
                     </tbody>
                 </table>
+
+                <button onClick={this.handleOpenModal.bind(this)}>Trigger Modal</button>
+                <ReactModal
+                    isOpen={this.state.showModal}
+                    contentLabel="Minimal Modal Example"
+                >
+                    <input type="text"/>
+                    <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
+                </ReactModal>
             </div>
         );
     }
