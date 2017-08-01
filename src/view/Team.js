@@ -5,16 +5,37 @@ export default class Team extends Component {
     constructor () {
         super();
         this.state = {
-            showModal: false
+            showModal: false,
+            player:{
+                id: '',
+                name: '',
+                lastName: '',
+                number: '',
+                role: ''
+            }
         };
     }
 
-    handleOpenModal () {
-        this.setState({ showModal: true });
+    handleChange({ target }) {
+        this.setState({
+            player: {
+                ...this.state.player,
+                [target.id]: target.value
+            }
+        });
+    }
+
+    handleOpenModal (player) {
+        this.setState({
+            showModal: true,
+            player:player
+        });
     }
 
     handleCloseModal () {
-        this.setState({ showModal: false });
+        this.setState({
+            showModal: false
+        });
     }
 
     addPlayer(){
@@ -34,12 +55,9 @@ export default class Team extends Component {
         this.props.playerActions.deletePlayer(id);
     }
 
-    updatePlayer(player){
-        // this.nameInput.value = player.name;
-        // this.lastNameInput.value = player.lastName;
-        // this.numberInput.value = player.number;
-        // this.roleInput.value = player.role;
-        // this.props.playerActions.updatePlayer(player);
+    updatePlayer(event){
+        event.preventDefault();
+        console.log(this.state.player);
     }
 
     render() {
@@ -71,19 +89,27 @@ export default class Team extends Component {
                             <td>{player.number}</td>
                             <td>{player.role}</td>
                             <td><button onClick={this.deletePlayer.bind(this, player.id)}>Remove</button></td>
-                            <td><button onClick={this.updatePlayer.bind(this, player)}>Update</button></td>
+                            <td><button onClick={this.handleOpenModal.bind(this, player)}>Update</button></td>
                         </tr>
                     )}
                     </tbody>
                 </table>
 
-                <button onClick={this.handleOpenModal.bind(this)}>Trigger Modal</button>
                 <ReactModal
                     isOpen={this.state.showModal}
                     contentLabel="Minimal Modal Example"
                 >
-                    <input type="text"/>
-                    <button onClick={this.handleCloseModal.bind(this)}>Close Modal</button>
+                    <form onSubmit={this.updatePlayer.bind(this)}>
+                        {/*<input type="text" value={this.state.value} onChange={this.handleChange.bind(this)} />*/}
+                        <input type="text" id="id" placeholder="Id" value={this.state.player.id} onChange={this.handleChange.bind(this)}/>
+                        <input type="text" id="name" placeholder="Name" value={this.state.player.name} onChange={this.handleChange.bind(this)}/>
+                        <input type="text" id="lastName" placeholder="Last Name" value={this.state.player.lastName} onChange={this.handleChange.bind(this)}/>
+                        <input type="text" id="number" placeholder="Number" value={this.state.player.number} onChange={this.handleChange.bind(this)}/>
+                        <input type="text" id="role" placeholder="Role" value={this.state.player.role} onChange={this.handleChange.bind(this)}/>
+
+                        <button type="button" onClick={this.handleCloseModal.bind(this)}>Cancel</button>
+                        <button type="button" onClick={this.updatePlayer.bind(this)}>Save</button>
+                    </form>
                 </ReactModal>
             </div>
         );
