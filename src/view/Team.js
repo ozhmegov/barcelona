@@ -52,7 +52,8 @@ export default class Team extends Component {
         });
     }
 
-    addPlayer(){
+    addPlayer(event){
+        event.preventDefault();
         this.props.playerActions.addPlayer({
             name: this.nameInput.value,
             lastName: this.lastNameInput.value,
@@ -145,7 +146,7 @@ export default class Team extends Component {
                     isOpen={this.state.showAddPlayerModal}
                     contentLabel="AddPlayerModal"
                 >
-                    <form id="lF" onSubmit={this.addPlayer.bind(this)}>
+                    <form onSubmit={this.addPlayer.bind(this)}>
                         <input type="text" placeholder="Name" ref={(input) => {this.nameInput = input}}/>
                         <input type="text" placeholder="Last Name" ref={(input) => {this.lastNameInput = input}}/>
                         <input type="text" placeholder="Number" ref={(input) => {this.numberInput = input}}/>
