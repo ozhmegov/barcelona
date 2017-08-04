@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactModal from 'react-modal';
+import '../css/Team.css';
 
 export default class Team extends Component {
     constructor () {
@@ -79,7 +80,7 @@ export default class Team extends Component {
 
     render() {
         return (
-            <div>
+            <div className="teamPage">
                 <table>
                     <thead>
                     <tr>
@@ -88,6 +89,7 @@ export default class Team extends Component {
                         <th>Last Name</th>
                         <th>Number</th>
                         <th>Role</th>
+                        <th></th>
                         <th><button onClick={this.handleOpenAddPlayerModal.bind(this)}>+</button></th>
                     </tr>
                     </thead>

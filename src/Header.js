@@ -8,13 +8,15 @@ export default class Header extends Component {
         return (
             <header>
                 <nav>
-                    <ul>
-                        <li><img src={logo} alt="My logo" /></li>
-                        <li className="label">FC Barcelona</li>
-                        <li className="navRight"><Link to='/schedule'>Schedule</Link></li>
-                        <li className="navRight"><Link to='/team'>Team</Link></li>
-                        <li className="navRight"><Link to='/'>About</Link></li>
-                    </ul>
+                    <div>
+                        <ul>
+                            <li><img className="logo" src={logo} alt="My logo" /></li>
+                            <li className="label">FC Barcelona</li>
+                            <li className="rightNav"><Link to='/schedule'>Schedule</Link></li>
+                            <li className="rightNav"><Link to='/team'>Team</Link></li>
+                            <li className="rightNav"><Link to='/'>About</Link></li>
+                        </ul>
+                    </div>
                 </nav>
             </header>
         );

@@ -3,22 +3,37 @@ ul {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #C60000;
+
+    background-image: linear-gradient(bottom, #C60000 50%, blue 50%);
+    background-image: -o-linear-gradient(bottom, #C60000 50%, blue 50%);
+    background-image: -moz-linear-gradient(bottom, #C60000 50%, blue 50%);
+    background-image: -webkit-linear-gradient(bottom, #C60000 50%, blue 50%);
+    background-image: -ms-linear-gradient(bottom, #C60000 50%, blue 50%);
+
+}
+.downNav {
+    margin-top: 100px;
+    background-color: blue;
 }
 
-.navRight{
+.rightNav {
+    margin-top: 4px;
     float: right;
 }
 
 .label {
     font-size: xx-large;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-left: 5px;
     color: yellow;
     text-align: center;
     font-weight: 900;
     font-family: sans-serif;
     text-decoration: none;
+}
+
+.logo {
+    margin-top: 4px;
 }
 
 li {
@@ -37,5 +52,5 @@ li a {
 }
 
 li a:hover {
-    color: black;
+    color: wheat;
 }
